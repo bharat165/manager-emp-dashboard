@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/guard/auth-service.service';
 import { CommonService } from 'src/app/service/common.service';
 
 @Component({
@@ -14,9 +15,14 @@ export class LoginComponent implements OnInit {
   getLoginDetails: any;
   isLogin: boolean = true;
 
-  constructor(public router: Router, private fb: FormBuilder, private _snackBar: MatSnackBar, private service: CommonService) { }
+  constructor(public router: Router, 
+              private fb: FormBuilder, 
+              private _snackBar: MatSnackBar, 
+              private commonService: CommonService,
+              private authService : AuthServiceService) { }
 
   ngOnInit(): void {
+    
     this.getLoginDetails = JSON.parse(localStorage.getItem('register-page-Details'));
     this.loginForm = this.fb.group({
       email: ["", [Validators.required, Validators.email]],
@@ -30,29 +36,20 @@ export class LoginComponent implements OnInit {
     if(loginForm.valid){
       console.log(this.getLoginDetails)
       console.log(loginForm.value)
-
       if(this.getLoginDetails){
         this.getLoginDetails.forEach(item =>{
           if(item.email === loginForm.value.email && item.password === loginForm.value.password ){
             console.log('Login success')
-            localStorage.setItem('isLoggedIn', 'true');
-            this.service.getIsLoggedInDetails(true);
-            this.isLogin = true;
-            this.service.success('Succesfully logIn');
-           
-            // this.router.navigate(['/dashboard']);
+            this.authService.setToken(loginForm.value.email)
+            this.authService.getIsLoggedInDetails(true);
+            this.commonService.success('Succesfully logIn');
+             this.router.navigate(['home-page']);
           } else {
             console.log('Check details');
-            this.service.error('Please check credentials');
-
-            this.isLogin = false;
+            this.commonService.error('Please check credentials');
           }
         });
       }
-
-      
-
-
     }
   }
 

@@ -20,6 +20,10 @@ const routes: Routes = [
     component: RegisterComponent
   },
   
+  { path: 'home-page', 
+    loadChildren: () => import('src/app/components/home-page/home-page.module').then(m => m.HomePageModule) 
+  }
+  
 ];
 
 @NgModule({

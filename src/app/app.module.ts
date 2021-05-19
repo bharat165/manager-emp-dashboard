@@ -12,12 +12,16 @@ import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from './material/material/material.module';
 import { CommonService } from './service/common.service';
 import { AuthenticationGuard } from './guard/authentication.guard';
+import { HeaderComponent } from './components/header/header.component';
+import { AuthServiceService } from './guard/auth-service.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    HeaderComponent, 
     
     
   ],
@@ -32,7 +36,7 @@ import { AuthenticationGuard } from './guard/authentication.guard';
     HttpClientModule
     
   ],
-  providers: [CommonService, AuthenticationGuard],
+  providers: [CommonService, AuthenticationGuard, AuthServiceService],
   entryComponents: [],
   bootstrap: [AppComponent]
 })
