@@ -1,5 +1,26 @@
-<div class="registerContainer" fxLayout="column" fxLayoutAlign="center center">
-    <mat-card>
+<div class="registrationContainer" fxLayout="row">
+    <div fxFlex="50" fxLayout="column" fxLayoutAlign="center center" class="bgColor">
+        <div class="title">MIND <br> BOWSER</div>
+    </div>
+    <div fxFlex="50" fxLayout="column" fxLayoutAlign="center center" class="posRelative">
+        <div fxLayout="row" fxLayoutGap="1em" class="headerContainer"> 
+            <div class="pointer"  routerLink="/login">Login</div>
+            <div class="pointer" routerLink="/register">Register</div>
+        </div>
+        
+        <form>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="registerContainer" fxLayout="column" fxLayoutAlign="center center"> -->
+    <!-- <mat-card>
         <div fxLayout="column" fxLayoutGap="1.5em">
             <div class="heading">Signup Form</div>
             <form [formGroup]="registerPageForm" (ngSubmit)="onSubmit(registerPageForm)">
@@ -69,5 +90,5 @@
             
             
         </div>
-    </mat-card>
-</div>
+    </mat-card> -->
+<!-- </div> -->

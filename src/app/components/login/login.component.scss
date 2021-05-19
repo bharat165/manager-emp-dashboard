@@ -1,44 +1,32 @@
 .loginContainer{
     width: 100%;
-    height: calc(100% - 4em);
-    background: #eee6;
-
-    .mt-1{
-        margin-top: 1em;
+    height: 100%;
+    background: transparent;
+    .bgColor{
+        background: linear-gradient(45deg, #023b84, #012252);
     }
 
-    .mat-card{
-        width: 40%;
-        min-height:0%;
-    }
-
-    .heading{
-        font-size: 1.2em;
+    .title{
+        font-size: 3em;
+        font-weight: bold;
+        color: #fff;
         line-height: normal;
-        color: #333;
-        font-weight: 500;
+        letter-spacing: 0.06em;
     }
 
-    .subText{
-        font-size: 1em;
-        line-height: normal;
-        color: #333;
-        font-weight: 400;
-       
+    .posRelative{
+        position: relative;
     }
 
-    .mat-form-field{
-        width : 100%;
+    .headerContainer{
+        position: absolute;
+        top: 1em;
+        right: 2em;
     }
 
-    ::ng-deep{
-        .mat-form-field-wrapper{
-            padding-bottom: 0em !important;
-        }
-
-        .mat-error{
-            margin-top: 1.5em;
-        }
+    .pointer{
+        cursor: pointer;
+        outline: none;
     }
     
 }
