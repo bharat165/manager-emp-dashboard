@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.getLoginDetails = JSON.parse(localStorage.getItem('register-page-Details'));
     this.loginForm = this.fb.group({
-      username: ["", Validators.required],      
+      email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required]      
     });
   }
@@ -31,26 +31,26 @@ export class LoginComponent implements OnInit {
       console.log(this.getLoginDetails)
       console.log(loginForm.value)
 
-      if(this.getLoginDetails){
-        this.getLoginDetails.forEach(item =>{
-          if(item.firstName === loginForm.value.username && item.password === loginForm.value.password ){
-            console.log('Login success')
-            localStorage.setItem('isLoggedIn', 'true');
-            this.service.getIsLoggedInDetails(true);
-            this.isLogin = true;
-            this.router.navigate(['/dashboard']);
-          } else {
-            console.log('Check details');
-            this._snackBar.open('User not exist', '', {
-              duration: 3000,
-              panelClass: ['error-snackbar'],
-              horizontalPosition: 'right',
-              verticalPosition: 'top'
-            });
-            this.isLogin = false;
-          }
-        });
-      }
+      // if(this.getLoginDetails){
+      //   this.getLoginDetails.forEach(item =>{
+      //     if(item.firstName === loginForm.value.username && item.password === loginForm.value.password ){
+      //       console.log('Login success')
+      //       localStorage.setItem('isLoggedIn', 'true');
+      //       this.service.getIsLoggedInDetails(true);
+      //       this.isLogin = true;
+      //       this.router.navigate(['/dashboard']);
+      //     } else {
+      //       console.log('Check details');
+      //       this._snackBar.open('User not exist', '', {
+      //         duration: 3000,
+      //         panelClass: ['error-snackbar'],
+      //         horizontalPosition: 'right',
+      //         verticalPosition: 'top'
+      //       });
+      //       this.isLogin = false;
+      //     }
+      //   });
+      // }
 
       
 

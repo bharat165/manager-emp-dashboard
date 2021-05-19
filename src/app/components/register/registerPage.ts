@@ -3,5 +3,7 @@ export class Register {
     lastName:  string;
     email:  string;
     password:  string;
-    confirmPassword:  string;
+    company:  string;
+    birthDate: string;
+    address: string;
 }

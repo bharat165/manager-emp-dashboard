@@ -2,14 +2,46 @@
     <div fxFlex="50" fxLayout="column" fxLayoutAlign="center center" class="bgColor">
         <div class="title">MIND <br> BOWSER</div>
     </div>
-    <div fxFlex="50" fxLayout="column" fxLayoutAlign="center center" class="posRelative">
+    <div fxFlex="50" fxLayout="column" fxLayoutAlign="center start" class="posRelative p-2">
         <div fxLayout="row" fxLayoutGap="1em" class="headerContainer"> 
             <div class="pointer" routerLink="/login">Login</div>
             <div class="pointer"  routerLink="/register">Register</div>
         </div>
-        
-        <form>
 
+        <div class="logText">
+            Login
+        </div>
+        
+        <form  [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)">
+            <div fxLayout="column" fxLayoutGap="0em">         
+    
+                <div fxLayout="row" fxFlex="100" fxLayoutGap="1em" >
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Placeholder" formControlName="email" >    
+                        <mat-error>Email is Required</mat-error>                    
+                      </mat-form-field>
+                     
+                </div>
+
+                <div fxLayout="row" fxFlex="100" fxLayoutGap="1em" >
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput placeholder="Placeholder" formControlName="password">   
+                        <mat-error>Password is Required</mat-error>                       
+                      </mat-form-field>
+                     
+                </div>
+
+
+               
+
+                <div fxLayout="row" fxFlex="100" fxLayoutGap="1em" >
+                    <button mat-stroked-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+                </div>
+            </div>
+
+           
         </form>
     </div>
 </div>

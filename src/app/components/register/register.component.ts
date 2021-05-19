@@ -21,17 +21,12 @@ export class RegisterComponent implements OnInit {
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
-      confirmPassword: ["", Validators.required],
+      company: ["", Validators.required],
+      birthDate: ["", Validators.required],
+      address: ["", Validators.required],
      
     });
 
-    
-
-    if(this.isEditItem){
-      // this.registerPageForm.setValue(this.isEditItem);      
-    } else{
-      // this.registerPageForm.reset();
-    }
   }
 
  
@@ -39,48 +34,23 @@ export class RegisterComponent implements OnInit {
   onSubmit(registerPageForm){
     if (registerPageForm.valid) {
       console.log(registerPageForm.value)
-      console.log(registerPageForm.value.password)
-      console.log(registerPageForm.value.confirmPassowrd)
-      if(registerPageForm.value.password === registerPageForm.value.confirmPassword){
-        this.registerPageDetails.push(registerPageForm.value);
-       localStorage.setItem("register-page-Details",JSON.stringify(this.registerPageDetails));
+      // console.log(registerPageForm.value.password)
+      // console.log(registerPageForm.value.confirmPassowrd)
+      // if(registerPageForm.value.password === registerPageForm.value.confirmPassword){
+      //   this.registerPageDetails.push(registerPageForm.value);
+      //  localStorage.setItem("register-page-Details",JSON.stringify(this.registerPageDetails));
 
-      } else {
-                  this._snackBar.open('Entered password doesnot match', '', {
-            duration: 3000,
-            panelClass: ['error-snackbar'],
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
+      // } else {
+      //             this._snackBar.open('Entered password doesnot match', '', {
+      //       duration: 3000,
+      //       panelClass: ['error-snackbar'],
+      //       horizontalPosition: 'right',
+      //       verticalPosition: 'top'
+      //     });
         
-      }
+      // }
 
 
-
-      // this.registerPageDetails.push(registerPageForm.value);
-      // console.log(this.registerPageDetails)
-
-//       this.registerPageDetails.(item=>{
-//         if(item.passowrd == item.confirmPassowrd){
-// // sessionStorage.setItem(
-//       //   "register-page-Details",
-//       //   JSON.stringify(this.registerPageDetails)
-//       // );
-
-//       // this.router.navigate(['login'])
-//         } else{         
-
-//           this._snackBar.open('Entered password doesnot match', '', {
-//             duration: 3000,
-//             panelClass: ['error-snackbar'],
-//             horizontalPosition: 'right',
-//             verticalPosition: 'top'
-//           });
-//         }
-//       });
-      
-     
-      // this.registerPageForm.reset();
       
     }
   }

@@ -7,7 +7,7 @@
     }
 
     .title{
-        font-size: 3em;
+        font-size: 4em;
         font-weight: bold;
         color: #fff;
         line-height: normal;
@@ -27,6 +27,27 @@
     .pointer{
         cursor: pointer;
         outline: none;
+    }
+    .p-2{
+        padding: 2em;
+    }
+    .registerText{
+        font-size: 1.5em;
+        font-weight: 500; 
+        line-height: normal;  
+        padding-bottom: 1.5em; 
+    }
+
+    .mat-button-base{
+        width: 100%;
+        font-size: 1.2em;
+        padding: .5em;
+        border: 1px solid #023980;
+    }
+    
+    .mat-stroked-button.mat-button-disabled.mat-button-disabled {
+        color: rgba(0,0,0,.26);
+        border: 1px solid rgba(0,0,0,.26) !important;
     }
 
 }
