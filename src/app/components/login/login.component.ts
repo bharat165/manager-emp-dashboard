@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
               private authService : AuthServiceService) { }
 
   ngOnInit(): void {
+    this.authService.getIsLoggedInDetails(false);
     
     this.getLoginDetails = JSON.parse(localStorage.getItem('register-page-Details'));
     this.loginForm = this.fb.group({

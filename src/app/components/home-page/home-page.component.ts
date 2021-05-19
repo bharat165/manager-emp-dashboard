@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from 'src/app/guard/auth-service.service';
 import { CommonService } from 'src/app/service/common.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { CommonService } from 'src/app/service/common.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(public commonServie: CommonService) { }
+  constructor(public commonServie: CommonService, public authService: AuthServiceService) { }
 
   ngOnInit(): void {
-    // this.commonServie.setShowNav(true);
+    this.authService.getIsLoggedInDetails(true);
   }
 
 }
