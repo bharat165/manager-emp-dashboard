@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators ,FormsModule,NgForm } from '@angular/forms'; 
 import {MatSnackBar} from '@angular/material/snack-bar'; 
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/service/common.service';
 import { Register } from './registerPage';
 
 @Component({
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   registerPageForm: FormGroup;
   registerPageDetails: Register[] = [];
   isEditItem;
-  constructor(private fb: FormBuilder, public router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private fb: FormBuilder, public router: Router, private _snackBar: MatSnackBar, private service: CommonService) { }
 
   ngOnInit(): void {
     this.registerPageForm = this.fb.group({
@@ -36,12 +37,8 @@ export class RegisterComponent implements OnInit {
       console.log(registerPageForm.value);
       this.registerPageDetails.push(registerPageForm.value);
       localStorage.setItem("register-page-Details",JSON.stringify(this.registerPageDetails));
-      this._snackBar.open('Registration Successful', '', {
-              duration: 3000,
-              panelClass: ['success-snackbar'],
-              horizontalPosition: 'right',
-              verticalPosition: 'top'
-            });
+      this.service.success('Registration Successful');
+     
 
 
 

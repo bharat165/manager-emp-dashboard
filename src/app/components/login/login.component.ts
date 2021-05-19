@@ -38,21 +38,13 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('isLoggedIn', 'true');
             this.service.getIsLoggedInDetails(true);
             this.isLogin = true;
-            this._snackBar.open('Succesfully logIn', '', {
-              duration: 3000,
-              panelClass: ['success-snackbar'],
-              horizontalPosition: 'right',
-              verticalPosition: 'top'
-            });
+            this.service.success('Succesfully logIn');
+           
             // this.router.navigate(['/dashboard']);
           } else {
             console.log('Check details');
-            this._snackBar.open('Please check credentials', '', {
-              duration: 3000,
-              panelClass: ['error-snackbar'],
-              horizontalPosition: 'right',
-              verticalPosition: 'top'
-            });
+            this.service.error('Please check credentials');
+
             this.isLogin = false;
           }
         });
