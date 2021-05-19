@@ -1,0 +1,35 @@
+<div class="dashboardContainer" fxLayout="column" fxLayoutGap="1.5em">
+    <div class="heading">Dashboard</div>
+    <div>
+        <button mat-stroked-button color="primary" (click)="createEmpData()">Create</button>
+    </div>
+    
+    <div>
+        <table class="table table-bordered mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Age</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of empData; let i = index">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.employee_name}}</td>
+                <td>{{item.employee_salary}}</td>
+                <td>{{item.employee_age}}</td>
+                <td>
+                    <div fxLayout="row" fxLayoutGap="1em" fxLayoutAlign="center center">
+                        <div class=" pointer" (click)="editData(item)">Edit </div>
+                        <div class=" pointer" (click)="deleteData(item.id)">Delete </div>
+                    </div>
+                </td>
+              </tr>
+             
+            </tbody>
+          </table>
+    </div>
+</div>

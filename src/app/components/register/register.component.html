@@ -1,0 +1,73 @@
+<div class="registerContainer" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+        <div fxLayout="column" fxLayoutGap="1.5em">
+            <div class="heading">Signup Form</div>
+            <form [formGroup]="registerPageForm" (ngSubmit)="onSubmit(registerPageForm)">
+                <div fxLayout="column" fxLayoutGap="1em">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
+                     
+                        <div fxFlex="100" >
+                            <mat-form-field  appearance="outline">
+                                <mat-label>FirstName</mat-label>
+                                <input matInput placeholder="Placeholder" formControlName="firstName">  
+                                <mat-error>Firstname is Required</mat-error>                       
+                              </mat-form-field>
+                        </div>                  
+                            
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
+                        
+                        <div fxFlex="100">
+                            <mat-form-field appearance="outline">
+                                <mat-label>LastName</mat-label>
+                                <input matInput placeholder="Placeholder" formControlName="lastName"> 
+                                <mat-error>Lastname is Required</mat-error>                        
+                              </mat-form-field>
+                        </div>                   
+                            
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
+                       
+                        <div fxFlex="100">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="Placeholder" formControlName="email">    
+                                <mat-error>Email is Required</mat-error>                    
+                              </mat-form-field>
+                        </div>                   
+                            
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
+                        
+                        <div fxFlex="100">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input type="password" matInput placeholder="Placeholder" formControlName="password">   
+                                <mat-error>Password is Required</mat-error>                       
+                              </mat-form-field>
+                        </div>                   
+                            
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
+                        
+                        <div fxFlex="100">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Confirm Password</mat-label>
+                                <input type="password"  matInput placeholder="Placeholder" formControlName="confirmPassword">  
+                                <mat-error>Password is Required</mat-error>                       
+                              </mat-form-field>
+                        </div>                   
+                            
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="center center" class="mt-2">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!registerPageForm.valid">Submit</button>
+                </div>
+                
+            </form>
+            
+            
+        </div>
+    </mat-card>
+</div>

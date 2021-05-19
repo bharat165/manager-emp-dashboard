@@ -1,0 +1,44 @@
+.loginContainer{
+    width: 100%;
+    height: calc(100% - 4em);
+    background: #eee6;
+
+    .mt-1{
+        margin-top: 1em;
+    }
+
+    .mat-card{
+        width: 40%;
+        min-height:0%;
+    }
+
+    .heading{
+        font-size: 1.2em;
+        line-height: normal;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .subText{
+        font-size: 1em;
+        line-height: normal;
+        color: #333;
+        font-weight: 400;
+       
+    }
+
+    .mat-form-field{
+        width : 100%;
+    }
+
+    ::ng-deep{
+        .mat-form-field-wrapper{
+            padding-bottom: 0em !important;
+        }
+
+        .mat-error{
+            margin-top: 1.5em;
+        }
+    }
+    
+}
