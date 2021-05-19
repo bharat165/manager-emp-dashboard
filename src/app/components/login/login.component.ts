@@ -31,26 +31,32 @@ export class LoginComponent implements OnInit {
       console.log(this.getLoginDetails)
       console.log(loginForm.value)
 
-      // if(this.getLoginDetails){
-      //   this.getLoginDetails.forEach(item =>{
-      //     if(item.firstName === loginForm.value.username && item.password === loginForm.value.password ){
-      //       console.log('Login success')
-      //       localStorage.setItem('isLoggedIn', 'true');
-      //       this.service.getIsLoggedInDetails(true);
-      //       this.isLogin = true;
-      //       this.router.navigate(['/dashboard']);
-      //     } else {
-      //       console.log('Check details');
-      //       this._snackBar.open('User not exist', '', {
-      //         duration: 3000,
-      //         panelClass: ['error-snackbar'],
-      //         horizontalPosition: 'right',
-      //         verticalPosition: 'top'
-      //       });
-      //       this.isLogin = false;
-      //     }
-      //   });
-      // }
+      if(this.getLoginDetails){
+        this.getLoginDetails.forEach(item =>{
+          if(item.email === loginForm.value.email && item.password === loginForm.value.password ){
+            console.log('Login success')
+            localStorage.setItem('isLoggedIn', 'true');
+            this.service.getIsLoggedInDetails(true);
+            this.isLogin = true;
+            this._snackBar.open('Succesfully logIn', '', {
+              duration: 3000,
+              panelClass: ['success-snackbar'],
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+            // this.router.navigate(['/dashboard']);
+          } else {
+            console.log('Check details');
+            this._snackBar.open('Please check credentials', '', {
+              duration: 3000,
+              panelClass: ['error-snackbar'],
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+            this.isLogin = false;
+          }
+        });
+      }
 
       
 

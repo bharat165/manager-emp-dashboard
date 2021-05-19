@@ -33,7 +33,20 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(registerPageForm){
     if (registerPageForm.valid) {
-      console.log(registerPageForm.value)
+      console.log(registerPageForm.value);
+      this.registerPageDetails.push(registerPageForm.value);
+      localStorage.setItem("register-page-Details",JSON.stringify(this.registerPageDetails));
+      this._snackBar.open('Registration Successful', '', {
+              duration: 3000,
+              panelClass: ['success-snackbar'],
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+
+
+
+
+
       // console.log(registerPageForm.value.password)
       // console.log(registerPageForm.value.confirmPassowrd)
       // if(registerPageForm.value.password === registerPageForm.value.confirmPassword){

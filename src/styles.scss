@@ -8,6 +8,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .error-snackbar {
     background: #f32121;
     color: #fff;
+    font-weight: 500;
+  }
+
+  .success-snackbar{
+    background: #086b10;
+    color: #fff;
+    font-weight: 500;
   }
 
   .mat-form-field{
