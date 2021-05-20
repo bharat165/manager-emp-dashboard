@@ -1,11 +1,11 @@
 <div class="empContainer" fxLayout="column" fxLayoutGap="1.2em">
     <div fxLayout="row" fxLayoutAlign="space-between center" >
-        <div>Employees</div>
-        <button mat-stroked-button color="primary" type="button" (click)="createEmpData()">Add Employees</button>
+        <div class="title">Employees</div>
+        <button mat-flat-button color="primary" type="button" (click)="createEmpData()">Add Employees</button>
 
     </div>
     
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource$ |async " class="mat-elevation-z8">
 
         <ng-container matColumnDef="firstName">
           <th mat-header-cell *matHeaderCellDef> First Name </th>
@@ -43,10 +43,10 @@
 
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let element"> 
+            <td mat-cell *matCellDef="let element; let i = index"> 
             <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
                 <mat-icon aria-hidden="false" class="editIcon pointer" (click)="editEmpList(element)">edit</mat-icon>
-                <mat-icon aria-hidden="false" class="deleteIcon pointer" (click)="deleteEmployee()">delete</mat-icon>
+                <mat-icon aria-hidden="false" class="deleteIcon pointer" (click)="deleteEmployee(i, element)">delete</mat-icon>
 
 
             </div>    

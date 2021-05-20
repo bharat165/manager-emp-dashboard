@@ -5,6 +5,12 @@
 .title{
     font-size: 1.2em;
     font-weight: 500;
-    line-height: normal;
+    line-height: 1.8em;
     color: #333;
+    text-align: center;
+
+    span{
+        color: #000;
+        font-size: 1.2em;    
+    }
 }

@@ -1,8 +1,9 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, Subject, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject, throwError } from 'rxjs';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Employee } from '../components/home-page/employee-list/employee';
+import { AuthServiceService } from '../guard/auth-service.service';
 
 
 
@@ -10,14 +11,15 @@ import { Employee } from '../components/home-page/employee-list/employee';
   providedIn: 'root'
 })
 export class CommonService {
-  
-  employeeDataList: Employee[] = [
+
+    employeeDataList$: BehaviorSubject<Employee[]> = new BehaviorSubject ([
     {firstName: 'Rahul', lastName: 'Bagve', address: 'Pune', birthDate: '05/18/1999', mobile:111111111, city: 'Pune' },
     {firstName: 'Bharat', lastName: 'Jadhav', address: 'Pune', birthDate: '05/22/1999', mobile:111111111, city: 'Delhi' },
 
-  ];
+  ]);
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar,
+    public authService: AuthServiceService) { }
 
 
   success(message, duration?, verticalPosition?, horizontalPosition?, action?) {
@@ -31,7 +33,7 @@ export class CommonService {
 
   private openSnackBar(message, type, duration?, verticalPosition?, horizontalPosition?, action?) {
     const messageConfig: any = {
-      defaultShowMessageTime: 3000,
+      defaultShowMessageTime: 2000,
       horizontalPosition: 'right',
       verticalPosition: 'top'
     };
@@ -63,7 +65,36 @@ export class CommonService {
     }, 100);
   }
 
+  getUserInitials() {
+    const registerPageDetails = JSON.parse(localStorage.getItem('register-page-Details'));
+    // console.log(this.registerPageDetails)
+    const loggedInUser = this.authService.getToken();
+    console.log(loggedInUser)
+
+    if(loggedInUser){
+      const getLoggedInUser = registerPageDetails.filter((item)=>{
+        return item.email === loggedInUser
+   })[0];
+
+   return (getLoggedInUser.firstName.charAt(0) + getLoggedInUser.lastName.charAt(0)).toUpperCase();
+    }
+
+
+  }
+
+  getEmployeeList() {
+    return this.employeeDataList$;
+  }
+
+  saveEmployee(employee) {
+    this.employeeDataList$.next(this.employeeDataList$.getValue().concat(employee));
+  }
+
+  deleteEmployee(employeeId) {
+    this.employeeDataList$.next(this.employeeDataList$.getValue().filter((list, index) => (index !==employeeId)));
+  }
+
  
 
-
 }
+

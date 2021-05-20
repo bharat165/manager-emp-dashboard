@@ -1,11 +1,11 @@
-<div class="deleteContainer" fxLayout="column" fxLayoutGap="2em">
+<div class="deleteContainer" fxLayout="column" fxLayoutGap="1em">
     <div  fxLayout="row" fxLayoutAlign="space-between center">
         <div></div>
         <mat-icon aria-hidden="false" class="closeIon" (click)="dialogRef.close()">close</mat-icon>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.2em">
-        <div class="title">Are you sure want to delete employee record?</div>
-        <button mat-raised-button color="primary">Delete</button>
+        <div class="title">Are you sure want to delete employee record for <span>{{title}}</span>?</div>
+        <button mat-raised-button color="primary" (click)="deleteRecord()">Delete</button>
     </div>
 
 </div>

@@ -3,6 +3,16 @@
     background: #f5f5f5;
     padding: 1.5em;
 
+    .title{
+        font-size: 1.3em;
+        line-height: normal;
+    }
+
+    table{
+        th, td{
+            font-size: 1em;
+        }
+    }
 
     .mat-elevation-z8{
         width: 100%;

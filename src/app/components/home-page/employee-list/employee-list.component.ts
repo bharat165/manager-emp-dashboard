@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 import { DeleteEmployeeComponent } from '../delete-employee/delete-employee.component';
 import { CommonService } from 'src/app/service/common.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,13 +13,14 @@ import { CommonService } from 'src/app/service/common.service';
 })
 export class EmployeeListComponent implements OnInit {
   displayedColumns: string[] = ['firstName', 'lastName', 'address', 'birthDate', 'mobile', 'city', 'action'];
-  dataSource;
+  dataSource$;
 
 
-  constructor(public dialog: MatDialog, public commonService: CommonService) { }
+  constructor(public dialog: MatDialog, public commonService: CommonService,
+    public commonServie:CommonService ) { }
 
   ngOnInit(): void {
-    this.dataSource = this.commonService.employeeDataList
+    this.dataSource$ = this.commonService.employeeDataList$;
   }
 
   createEmpData() {
@@ -27,8 +29,11 @@ export class EmployeeListComponent implements OnInit {
     });
 
     createEmpdialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-       
+      if(result){
+        this.commonServie.saveEmployee(result);
+        this.dataSource$ = this.commonServie.getEmployeeList();
+      }
+      
     });
   }
 
@@ -40,20 +45,30 @@ export class EmployeeListComponent implements OnInit {
     })
     editEmployeeListDialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      if(result){
+        // this.commonServie.deleteEmployee(id);
+        // this.dataSource$ = this.commonServie.getEmployeeList();
+        // this.commonService.success('Record Updated Successfully')
+      }
        
     });
   }
 
-  deleteEmployee(){
+  deleteEmployee(id, element){
+    console.log(id, element)
     const deleteEmpDailogRef = this.dialog.open(DeleteEmployeeComponent, {
       width: '30%', 
-      position : {'top': '3%'},
-        
-      // data: {name: this.name, animal: this.animal}
+      position : {'top': '3%'},        
+       data: element
     });
 
     deleteEmpDailogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      if(result){
+        this.commonServie.deleteEmployee(id);
+        this.dataSource$ = this.commonServie.getEmployeeList();
+        this.commonService.success('Record Deleted Successfully')
+      }
        
     });
   }

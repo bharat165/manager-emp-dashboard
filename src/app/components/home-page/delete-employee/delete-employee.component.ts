@@ -7,18 +7,18 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./delete-employee.component.scss']
 })
 export class DeleteEmployeeComponent implements OnInit {
-
+  title = ''
   constructor(public dialogRef: MatDialogRef<DeleteEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
   ngOnInit(): void {
-    let nameString = 'Bharat Jadhav'
+   
+    this.title = this.data.firstName + ' ' +this.data.lastName;
+     
+  }
 
-    const fullName = nameString.split(' ');
-const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
-
-console.log(initials.toUpperCase())
-// return initials.toUpperCase();
+  deleteRecord(){
+    this.dialogRef.close(this.data);
   }
 
 }

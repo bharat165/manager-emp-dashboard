@@ -1,8 +1,8 @@
 <header *ngIf="isLogInMode" fxLayout="row" fxLayoutAlign="space-between center">
     <div class="headerText">MIND BOWSER</div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="1em">
-        <mat-icon aria-hidden="false" aria-label="logout" class="grayColor" (click)="logout()">logout</mat-icon>
-    <div fxLayout="row" fxLayoutAlign="center center" class="profile">{{getLoggInInitials}}</div>    
+        <mat-icon aria-hidden="false" matTooltip="Logout" aria-label="logout" class="grayColor" (click)="logout()">logout</mat-icon>
+    <div fxLayout="row" fxLayoutAlign="center center" class="profile">{{this.commonService.getUserInitials()}}</div>    
     </div>
    
 </header>

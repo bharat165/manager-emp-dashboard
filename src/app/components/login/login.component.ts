@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
           this.authService.setToken(loginForm.value.email)
             this.authService.getIsLoggedInDetails(true);
             this.commonService.success('Succesfully logIn');
+           
             this.router.navigate(['home-page']);
         }else {
               console.log('Check details');

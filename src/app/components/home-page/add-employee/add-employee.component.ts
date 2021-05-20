@@ -47,10 +47,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   onSubmit(form){
-
-    
     form.value.birthDate = moment(form.value.birthDate).format('MM/DD/YYYY');
-    console.log(form.value)
 
     if(this.data){
       form.value['id'] = this.data.id
