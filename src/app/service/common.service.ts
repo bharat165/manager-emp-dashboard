@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { retry, catchError } from 'rxjs/operators';
+import { Employee } from '../components/home-page/employee-list/employee';
 
 
 
@@ -10,6 +10,12 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CommonService {
+  
+  employeeDataList: Employee[] = [
+    {firstName: 'Rahul', lastName: 'Bagve', address: 'Pune', birthDate: '05/18/1999', mobile:111111111, city: 'Pune' },
+    {firstName: 'Bharat', lastName: 'Jadhav', address: 'Pune', birthDate: '05/22/1999', mobile:111111111, city: 'Delhi' },
+
+  ];
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
@@ -25,7 +31,7 @@ export class CommonService {
 
   private openSnackBar(message, type, duration?, verticalPosition?, horizontalPosition?, action?) {
     const messageConfig: any = {
-      defaultShowMessageTime: 4000,
+      defaultShowMessageTime: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top'
     };
@@ -57,7 +63,7 @@ export class CommonService {
     }, 100);
   }
 
-
+ 
 
 
 }

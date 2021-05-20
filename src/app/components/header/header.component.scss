@@ -1,0 +1,31 @@
+header{
+    width: 100%;
+    min-height: 4em;
+    background: #fff;
+    position: relative;
+    box-shadow: 6px 1px 10px rgb(51 51 51 / 10%);
+    padding: 1em;
+
+    .headerText{
+        font-size: 1.4em;
+        font-weight: 500;
+        color: #333;
+        line-height: normal;
+    }
+
+    .profile{
+        width: 2.5em;
+        height: 2.5em;
+        background: blue;
+        border-radius: 50%;
+        position: relative;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .grayColor{
+        color: #333;
+        cursor: pointer;
+    }
+
+}

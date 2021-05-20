@@ -1,5 +1,17 @@
-<div (click)="logout()"  *ngIf="isLogInMode">Logout
+<header *ngIf="isLogInMode" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="headerText">MIND BOWSER</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="1em">
+        <mat-icon aria-hidden="false" aria-label="logout" class="grayColor" (click)="logout()">logout</mat-icon>
+    <div fxLayout="row" fxLayoutAlign="center center" class="profile">{{getLoggInInitials}}</div>    
+    </div>
+   
+</header>
+
+
+
+
+<!-- <div (click)="logout()"  *ngIf="isLogInMode">Logout
 
     <p>header works!</p> 
-</div>
+</div> -->
 

@@ -1,0 +1,67 @@
+<div class="empCreateContainer" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-icon aria-hidden="false" class="closeIon" (click)="dialogRef.close()">close</mat-icon>
+        <div fxLayout="column" fxLayoutGap="1.5em">
+            <div class="heading">Create Data</div>
+            <form  [formGroup]="formDetails" (ngSubmit)="onSubmit(formDetails)">
+                <div fxLayout="column" fxLayoutGap="1.2em">
+                    <div fxLayout="row" fxFlex="50" fxLayoutGap="1em" >
+                        <mat-form-field  appearance="outline">
+                            <mat-label>FirstName</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="firstName">  
+                            <mat-error>Firstname is Required</mat-error>                       
+                          </mat-form-field>
+                          <mat-form-field  appearance="outline">
+                            <mat-label>LastName</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="lastName">  
+                            
+                            <mat-error>LastName is Required</mat-error>                       
+                          </mat-form-field>
+                        </div>
+                    
+                    
+                    <div fxLayout="row" fxFlex="50" fxLayoutGap="1em" >
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mobile</mat-label>
+                            <input type="text" matInput placeholder="Placeholder" formControlName="mobile">   
+                            <mat-error>Mobile is Required</mat-error>                       
+                          </mat-form-field>
+    
+                          <mat-form-field appearance="outline">
+                            <mat-label>Choose a Birthdate</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>                     
+                    </div>
+    
+                    <div fxLayout="row" fxFlex="50" fxLayoutGap="1em" >
+                       
+                        <mat-form-field appearance="outline">
+                            <mat-label>Address</mat-label>
+                            <input type="text" matInput placeholder="Placeholder" formControlName="address">   
+                            <mat-error>Address is Required</mat-error>                       
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>City</mat-label>
+                            <input type="text" matInput placeholder="Placeholder" formControlName="city">   
+                            <mat-error>City is Required</mat-error>                       
+                          </mat-form-field>
+                       
+                    </div>
+
+
+    
+                    <div fxLayout="row" fxFlex="100" fxLayoutGap="1em" >
+                        <button mat-raised-button color="primary" [disabled]="!formDetails.valid">{{ this.data ? 'Update' : 'Create'}}</button>
+                    </div>
+                </div>
+    
+                
+            </form>
+            
+           
+        </div>
+    </mat-card>
+</div>

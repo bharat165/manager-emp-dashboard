@@ -38,20 +38,29 @@ export class LoginComponent implements OnInit {
       console.log(this.getLoginDetails)
       console.log(loginForm.value)
       if(this.getLoginDetails){
-        this.getLoginDetails.forEach(item =>{
-          if(item.email === loginForm.value.email && item.password === loginForm.value.password ){
-            console.log('Login success')
-            this.authService.setToken(loginForm.value.email)
+        
+        let checkEmailExist = this.getLoginDetails.some(item =>{
+
+          return item.email === loginForm.value.email && item.password === loginForm.value.password
+          
+        });
+
+        console.log(checkEmailExist)
+
+        if(checkEmailExist){
+          this.authService.setToken(loginForm.value.email)
             this.authService.getIsLoggedInDetails(true);
             this.commonService.success('Succesfully logIn');
-             this.router.navigate(['home-page']);
-          } else {
-            console.log('Check details');
-            this.commonService.error('Please check credentials');
-          }
-        });
-      }
+            this.router.navigate(['home-page']);
+        }else {
+              console.log('Check details');
+              this.commonService.error('Please check credentials');
+            }
+
+      } 
     }
   }
+
+
 
 }

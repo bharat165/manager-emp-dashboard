@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators ,FormsModule,NgForm } from '@angular/forms'; 
 import {MatSnackBar} from '@angular/material/snack-bar'; 
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/guard/auth-service.service';
 import { CommonService } from 'src/app/service/common.service';
 import { Register } from './registerPage';
 
@@ -14,9 +15,14 @@ export class RegisterComponent implements OnInit {
   registerPageForm: FormGroup;
   registerPageDetails: Register[] = [];
   isEditItem;
-  constructor(private fb: FormBuilder, public router: Router, private _snackBar: MatSnackBar, private service: CommonService) { }
+  constructor(private fb: FormBuilder, 
+              public router: Router, 
+              private _snackBar: MatSnackBar, 
+              private commonService: CommonService,
+              private authService : AuthServiceService) { }
 
   ngOnInit(): void {
+    this.authService.getIsLoggedInDetails(false);
     this.registerPageForm = this.fb.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
@@ -28,17 +34,21 @@ export class RegisterComponent implements OnInit {
      
     });
 
+
+    this.registerPageDetails = JSON.parse(localStorage.getItem('register-page-Details'));
+
   }
 
  
 
   onSubmit(registerPageForm){
-    if (registerPageForm.valid) {
+    if (registerPageForm.valid) { 
       console.log(registerPageForm.value);
-      this.registerPageDetails.push(registerPageForm.value);
-      localStorage.setItem("register-page-Details",JSON.stringify(this.registerPageDetails));
-      this.service.success('Registration Successful');
-     
+       this.registerPageDetails.push(registerPageForm.value);
+       console.log('Registration data', this.registerPageDetails);
+       localStorage.setItem("register-page-Details", JSON.stringify(this.registerPageDetails));
+      this.commonService.success('Registration Successful');
+      this.router.navigate(['/login'])
 
 
 
