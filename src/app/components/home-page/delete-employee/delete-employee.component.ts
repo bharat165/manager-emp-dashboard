@@ -11,8 +11,7 @@ export class DeleteEmployeeComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DeleteEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
-  ngOnInit(): void {
-   
+  ngOnInit(): void {   
     this.title = this.data.firstName + ' ' +this.data.lastName;
      
   }

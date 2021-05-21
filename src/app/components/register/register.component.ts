@@ -54,13 +54,10 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(registerPageForm){
     if (registerPageForm.valid) { 
-      console.log(registerPageForm.value);
-       this.registerPageDetails.push(registerPageForm.value);
-       console.log('Registration data', this.registerPageDetails);
+      this.registerPageDetails.push(registerPageForm.value);
        localStorage.setItem("register-page-Details", JSON.stringify(this.registerPageDetails));
       this.commonService.success('Registration Successful');
       this.router.navigate(['/login'])
-
     }
   }
 

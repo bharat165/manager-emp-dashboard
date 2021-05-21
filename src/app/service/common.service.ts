@@ -13,8 +13,8 @@ import { AuthServiceService } from '../guard/auth-service.service';
 export class CommonService {
 
     employeeDataList$: BehaviorSubject<Employee[]> = new BehaviorSubject ([
-    {firstName: 'Rahul', lastName: 'Bagve', address: 'Pune', birthDate: '05/18/1999', mobile:111111111, city: 'Pune' },
-    {firstName: 'Bharat', lastName: 'Jadhav', address: 'Pune', birthDate: '05/22/1999', mobile:111111111, city: 'Delhi' },
+    {id: 1, firstName: 'Rahul', lastName: 'Bagve', address: 'Pune', birthDate: '05/18/1999', mobile:111111111, city: 'Pune' },
+    {id: 2, firstName: 'Bharat', lastName: 'Jadhav', address: 'Pune', birthDate: '05/22/1999', mobile:111111111, city: 'Delhi' },
 
   ]);
 
@@ -94,7 +94,7 @@ export class CommonService {
   }
 
   editEmployee(employee) {
-    
+    this.employeeDataList$.next(employee);
 
   }
 

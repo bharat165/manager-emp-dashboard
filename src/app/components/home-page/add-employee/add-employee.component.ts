@@ -17,23 +17,14 @@ export class AddEmployeeComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<AddEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, public router: Router, private _snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
-
-    
-
-    console.log(this.data)
-
+  ngOnInit(): void {   
     this.formDetails = this.fb.group({
-
       firstName : ["", Validators.required],
         lastName : ["", Validators.required],
         address: ["", Validators.required],
         birthDate: ["", Validators.required],
         mobile:["", Validators.required],
-        city: ["", Validators.required],
-       
-
-     
+        city: ["", Validators.required]
     });
 
     
