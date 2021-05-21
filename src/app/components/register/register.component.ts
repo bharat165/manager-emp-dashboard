@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   registerPageForm: FormGroup;
   registerPageDetails: Register[] = [];
   isEditItem;
+  alreadyEmailExist = false;
   constructor(private fb: FormBuilder, 
               public router: Router, 
               private _snackBar: MatSnackBar, 
@@ -39,7 +40,18 @@ export class RegisterComponent implements OnInit {
 
   }
 
- 
+  checkEmailExist($event){
+
+    let checkEmailExist = this.registerPageDetails.some(item =>{
+      return item.email === $event.target.value;      
+    });
+
+    if(checkEmailExist){
+      this.alreadyEmailExist = true;
+    } else{
+      this.alreadyEmailExist = false;
+    }
+  } 
 
   onSubmit(registerPageForm){
     if (registerPageForm.valid) { 
@@ -50,28 +62,6 @@ export class RegisterComponent implements OnInit {
       this.commonService.success('Registration Successful');
       this.router.navigate(['/login'])
 
-
-
-
-
-      // console.log(registerPageForm.value.password)
-      // console.log(registerPageForm.value.confirmPassowrd)
-      // if(registerPageForm.value.password === registerPageForm.value.confirmPassword){
-      //   this.registerPageDetails.push(registerPageForm.value);
-      //  localStorage.setItem("register-page-Details",JSON.stringify(this.registerPageDetails));
-
-      // } else {
-      //             this._snackBar.open('Entered password doesnot match', '', {
-      //       duration: 3000,
-      //       panelClass: ['error-snackbar'],
-      //       horizontalPosition: 'right',
-      //       verticalPosition: 'top'
-      //     });
-        
-      // }
-
-
-      
     }
   }
 
