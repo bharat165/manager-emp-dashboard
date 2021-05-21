@@ -50,6 +50,9 @@ export class LoginComponent implements OnInit {
             }
 
       } 
+      else {
+        this.commonService.error('Please register with your mail id');
+      }
     }
   }
 

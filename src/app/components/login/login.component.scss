@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     background: transparent;
+    
     .bgColor{
         background: linear-gradient(45deg, #023b84, #012252);
     }
@@ -22,6 +23,7 @@
         position: absolute;
         top: 1em;
         right: 2em;
+        z-index: 9;
     }
 
     .pointer{

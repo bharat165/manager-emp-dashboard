@@ -36,17 +36,18 @@ export class RegisterComponent implements OnInit {
     });
 
     // Get register details from localstorage and check if email exist
-     this.registerPageDetails = JSON.parse(localStorage.getItem('register-page-Details'));
+     this.registerPageDetails = localStorage.getItem('register-page-Details')? JSON.parse(localStorage.getItem('register-page-Details')):[];
 
     this.registerPageForm.get("email").valueChanges.subscribe(value => {
-      let checkEmailExist = this.registerPageDetails.some(item =>{
-        return item.email === value;      
-      });
-  
-      if(checkEmailExist){
-        this.alreadyEmailExist = true;
-      } else{
-        this.alreadyEmailExist = false;
+      if(this.registerPageDetails) {
+        let checkEmailExist = this.registerPageDetails.some(item =>{
+          return item.email === value;      
+        });
+        if(checkEmailExist){
+          this.alreadyEmailExist = true;
+        } else{
+          this.alreadyEmailExist = false;
+        }
       }
    })
 
