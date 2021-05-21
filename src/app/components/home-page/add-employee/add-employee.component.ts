@@ -50,7 +50,6 @@ export class AddEmployeeComponent implements OnInit {
     form.value.birthDate = moment(form.value.birthDate).format('MM/DD/YYYY');
 
     if(this.data){
-      form.value['id'] = this.data.id
       this.dialogRef.close(form.value)
     } else{
       this.dialogRef.close(form.value)

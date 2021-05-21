@@ -52,19 +52,6 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  // checkEmailExist($event){
-
-  //   let checkEmailExist = this.registerPageDetails.some(item =>{
-  //     return item.email === $event.target.value;      
-  //   });
-
-  //   if(checkEmailExist){
-  //     this.alreadyEmailExist = true;
-  //   } else{
-  //     this.alreadyEmailExist = false;
-  //   }
-  // } 
-
   onSubmit(registerPageForm){
     if (registerPageForm.valid) { 
       console.log(registerPageForm.value);

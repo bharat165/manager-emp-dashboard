@@ -67,9 +67,8 @@ export class CommonService {
 
   getUserInitials() {
     const registerPageDetails = JSON.parse(localStorage.getItem('register-page-Details'));
-    // console.log(this.registerPageDetails)
     const loggedInUser = this.authService.getToken();
-    console.log(loggedInUser)
+ 
 
     if(loggedInUser){
       const getLoggedInUser = registerPageDetails.filter((item)=>{
@@ -92,6 +91,11 @@ export class CommonService {
 
   deleteEmployee(employeeId) {
     this.employeeDataList$.next(this.employeeDataList$.getValue().filter((list, index) => (index !==employeeId)));
+  }
+
+  editEmployee(employee) {
+    
+
   }
 
  

@@ -46,8 +46,9 @@ export class EmployeeListComponent implements OnInit {
     editEmployeeListDialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if(result){
-        // this.commonServie.deleteEmployee(id);
-        // this.dataSource$ = this.commonServie.getEmployeeList();
+         this.commonServie.editEmployee(result);
+        this.dataSource$ = this.commonServie.getEmployeeList();
+          
         // this.commonService.success('Record Updated Successfully')
       }
        
