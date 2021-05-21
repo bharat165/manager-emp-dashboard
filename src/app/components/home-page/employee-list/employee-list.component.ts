@@ -20,9 +20,11 @@ export class EmployeeListComponent implements OnInit {
     public commonServie:CommonService ) { }
 
   ngOnInit(): void {
+    //Get initial employee data
     this.dataSource$ = this.commonService.employeeDataList$;
   }
 
+  //Create employee data
   createEmpData() {
     const createEmpdialogRef = this.dialog.open(AddEmployeeComponent, {
       width: '40%',       
@@ -37,7 +39,8 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  editEmpList(element:Employee){
+  //Edit employee data
+  editEmpList(index:number,element:Employee){
     
     const editEmployeeListDialogRef = this.dialog.open(AddEmployeeComponent,{
       width: '40%', 
@@ -46,15 +49,14 @@ export class EmployeeListComponent implements OnInit {
     editEmployeeListDialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if(result){
-         this.commonServie.editEmployee(result);
+         this.commonServie.editEmployee(index,result);
         this.dataSource$ = this.commonServie.getEmployeeList();
-          
-        // this.commonService.success('Record Updated Successfully')
       }
        
     });
   }
 
+  //Delete employee data
   deleteEmployee(id, element){
     console.log(id, element)
     const deleteEmpDailogRef = this.dialog.open(DeleteEmployeeComponent, {

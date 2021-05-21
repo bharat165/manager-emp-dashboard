@@ -45,7 +45,7 @@
             <th mat-header-cell *matHeaderCellDef> Action </th>
             <td mat-cell *matCellDef="let element; let i = index"> 
             <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
-                <mat-icon aria-hidden="false" class="editIcon pointer" (click)="editEmpList(element)">edit</mat-icon>
+                <mat-icon aria-hidden="false" class="editIcon pointer" (click)="editEmpList(i,element)">edit</mat-icon>
                 <mat-icon aria-hidden="false" class="deleteIcon pointer" (click)="deleteEmployee(i, element)">delete</mat-icon>
 
 

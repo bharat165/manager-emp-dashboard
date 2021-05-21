@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
               private authService : AuthServiceService) { }
 
   ngOnInit(): void {
-    this.authService.getIsLoggedInDetails(false);
-    
+    this.authService.getIsLoggedInDetails(false);  
+    // Get register page details from localstorage  
     this.getLoginDetails = JSON.parse(localStorage.getItem('register-page-Details'));
     this.loginForm = this.fb.group({
       email: ["", [Validators.required, Validators.email]],
@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
   }
 
   
-
-  submitForm(loginForm: FormGroup){
+  // Get login details
+    submitForm(loginForm: FormGroup){
     if(loginForm.valid){      
       if(this.getLoginDetails){        
         let checkEmailExist = this.getLoginDetails.some(item =>{

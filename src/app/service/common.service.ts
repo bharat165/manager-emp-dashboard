@@ -11,17 +11,17 @@ import { AuthServiceService } from '../guard/auth-service.service';
   providedIn: 'root'
 })
 export class CommonService {
-
+    //Default Employee list
     employeeDataList$: BehaviorSubject<Employee[]> = new BehaviorSubject ([
-    {id: 1, firstName: 'Rahul', lastName: 'Bagve', address: 'Pune', birthDate: '05/18/1999', mobile:111111111, city: 'Pune' },
-    {id: 2, firstName: 'Bharat', lastName: 'Jadhav', address: 'Pune', birthDate: '05/22/1999', mobile:111111111, city: 'Delhi' },
+    {firstName: 'Rahul', lastName: 'Bagve', address: 'Pune', birthDate: '05/18/1999', mobile:111111111, city: 'Pune' },
+    {firstName: 'Bharat', lastName: 'Jadhav', address: 'Pune', birthDate: '05/22/1999', mobile:111111111, city: 'Delhi' },
 
   ]);
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar,
     public authService: AuthServiceService) { }
 
-
+  //Dynamic snackbar message   
   success(message, duration?, verticalPosition?, horizontalPosition?, action?) {
     this.openSnackBar(message, 'success', duration, verticalPosition, horizontalPosition, action);
   }
@@ -65,10 +65,10 @@ export class CommonService {
     }, 100);
   }
 
+  //Get initials of loggedIn user
   getUserInitials() {
     const registerPageDetails = JSON.parse(localStorage.getItem('register-page-Details'));
     const loggedInUser = this.authService.getToken();
- 
 
     if(loggedInUser){
       const getLoggedInUser = registerPageDetails.filter((item)=>{
@@ -77,25 +77,26 @@ export class CommonService {
 
    return (getLoggedInUser.firstName.charAt(0) + getLoggedInUser.lastName.charAt(0)).toUpperCase();
     }
-
-
   }
-
+//Get Employee Data
   getEmployeeList() {
     return this.employeeDataList$;
   }
 
+  //Save Employee Data
   saveEmployee(employee) {
     this.employeeDataList$.next(this.employeeDataList$.getValue().concat(employee));
   }
-
+  //Delete Employee Data
   deleteEmployee(employeeId) {
     this.employeeDataList$.next(this.employeeDataList$.getValue().filter((list, index) => (index !==employeeId)));
   }
-
-  editEmployee(employee) {
-    this.employeeDataList$.next(employee);
-
+  //Edit Employee Data
+  editEmployee(index:number,employee) { 
+    this.deleteEmployee(index);
+    let updatedArray = this.employeeDataList$.getValue();
+    updatedArray.splice(index,0,employee);
+    this.employeeDataList$.next(updatedArray);
   }
 
  

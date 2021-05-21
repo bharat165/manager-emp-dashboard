@@ -28,7 +28,7 @@ export class AddEmployeeComponent implements OnInit {
     });
 
     
-
+    // Check if data is editable or not
     if(this.data){
         this.formDetails.setValue(this.data);
         this.formDetails.controls['birthDate'].setValue(new Date(this.data.birthDate));
@@ -37,6 +37,7 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
+  
   onSubmit(form){
     form.value.birthDate = moment(form.value.birthDate).format('MM/DD/YYYY');
 

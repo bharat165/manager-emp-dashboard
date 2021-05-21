@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit {
   constructor(public commonServie: CommonService, public authService: AuthServiceService) { }
 
   ngOnInit(): void {
+    //
     this.authService.getIsLoggedInDetails(true);
   }
 

@@ -18,12 +18,14 @@ export class HeaderComponent implements OnInit {
    ) { }
 
   ngOnInit(): void {
+    //Check if is loggedIn mode
     this.authService.loggedIn.subscribe(name => this.isLogInMode = name);
     if(this.authService.isLoggedIn()) {
       this.isLogInMode = true;
     }
   }
 
+  //Logout Action
   logout(){
     localStorage.removeItem('LoggedInUser');
     this.authService.getIsLoggedInDetails(false)
