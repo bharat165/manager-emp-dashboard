@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getIsLoggedInDetails(false);  
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['/home-page'])
+    }
     // Get register page details from localstorage  
     this.getLoginDetails = JSON.parse(localStorage.getItem('register-page-Details'));
     this.loginForm = this.fb.group({
